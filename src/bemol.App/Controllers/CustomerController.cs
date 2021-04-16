@@ -42,6 +42,8 @@ namespace bemol.App.Controllers
 
             if (!OperacaoValida()) return View(customerViewModel);
 
+            PublishMessage(customer.Name);
+
             return RedirectToAction("Index", new { success = true });
         }
         

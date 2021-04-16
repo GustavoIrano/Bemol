@@ -12,6 +12,17 @@ services:
      - "8000:80"
     depends_on:
      - db
+     - rabbitmq
+    networks:
+     - net
+
+  bemol.consumerMessage:
+    image: ${DOCKER_REGISTRY-}bemolconsumermessage
+    build:
+      context: .
+      dockerfile: src/bemol.ConsumerMessage/Dockerfile
+    depends_on:
+     - rabbitmq
     networks:
      - net
 
@@ -30,9 +41,23 @@ services:
       - sql_data:/var/opt/mssql/data 
     networks:
       - net
- 
+
+  rabbitmq:    
+    image: rabbitmq:3-management
+    ports:
+    - "15672:15672"  #Management
+    - "5672:5672"    #AMQP
+    environment:
+      RABBITMQ_DEFAULT_USER: mc
+      RABBITMQ_DEFAULT_PASS: mc2
+      RABBITMQ_DEFAULT_VHOST: main
+    volumes:
+      - mq_data:/var/lib/rabbitmq/mnesia
+    networks: 
+     - net
 
 volumes:
+  mq_data:
   sql_data:
     driver: local
 
