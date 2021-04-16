@@ -1,0 +1,231 @@
+﻿@model bemol.App.Models.CustomerViewModel
+
+
+<div class="card card-outline-secondary">
+
+    @if (ViewBag.Success == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Cool, you are registered!</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+
+    <div class="card-header">
+        <h4 class="mb-0">Customer Information</h4>
+    </div>
+    <div class="card-body">
+
+        <form class="form" enctype="multipart/form-data" asp-action="Salvar">
+
+            <div class="form-row mt-4">
+
+                <div class="col-sm-7 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">Name</label>
+                    <div class="col-lg-12">
+                        <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-5 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                    <div class="col-lg-12">
+                        <input class="form-control" placeholder="email@gmail.com" type="email" asp-for="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row mt-4">
+
+                <div class="col-sm-6 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">Phone</label>
+                    <div class="col-lg-12">
+                        <input id="phone" class="form-control" placeholder="(99)99999-9999" type="text" asp-for="Phone">
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">CPF</label>
+                    <div class="col-lg-12">
+                        <input id="cpf" class="form-control" placeholder="999.999.999-9" type="text" asp-for="Cpf">
+                        <span asp-validation-for="Cpf" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row mt-4">
+
+                <div class="col-sm-2 pb-3">
+                    <label class="col-lg-5 col-form-label form-control-label">CEP</label>
+                    <div class="col-lg-12">
+                        <input id="cep" class="form-control" placeholder="99999-999" type="text" asp-for="AddressViewModel.Cep">
+                        <span id="cepError" asp-validation-for="AddressViewModel.Cep" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">Street</label>
+                    <div class="col-lg-12">
+                        <input id="street" class="form-control" placeholder="Rua, Av." type="text" asp-for="AddressViewModel.Street">
+                        <span asp-validation-for="AddressViewModel.Street" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-row mt-4">
+
+                <div class="col-sm-10 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">Neighborhood</label>
+                    <div class="col-lg-12">
+                        <input id="neighborhood" class="form-control" placeholder="Neighborhood" type="text" asp-for="AddressViewModel.Neighborhood">
+                        <span asp-validation-for="AddressViewModel.Neighborhood" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-2 pb-3">
+                    <label class="col-lg-8 col-form-label form-control-label">Number</label>
+                    <div class="col-lg-12">
+                        <input class="form-control" placeholder="9999" type="number" asp-for="AddressViewModel.Number">
+                        <span asp-validation-for="AddressViewModel.Number" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-row mt-4">
+
+                <div class="col-sm-9 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">City</label>
+                    <div class="col-lg-12">
+                        <input id="city" class="form-control" placeholder="City" type="text" asp-for="AddressViewModel.City">
+                        <span asp-validation-for="AddressViewModel.City" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 pb-3">
+                    <label class="col-lg-4 col-form-label form-control-label">State</label>
+                    <div class="col-lg-12">
+                        <select id="state" class="form-control" asp-for="AddressViewModel.State">
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                        <span asp-validation-for="AddressViewModel.State" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-row mt-4">
+                <div class="col-sm-12 pb-3">
+                    <label class="col-lg-3 col-form-label form-control-label">Complement</label>
+                    <div class="col-lg-12">
+                        <input id="complement" class="form-control" placeholder="Complement" type="text" asp-for="AddressViewModel.Complement">
+                        <span asp-validation-for="AddressViewModel.Complement" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-row mt-4 float-right">
+                <div class="col-lg-12">
+                    <div class="col-sm-12 pb-3">
+                        <input type="submit" class="btn btn-primary" value="Save" />
+                        <input type="reset" class="btn btn-secondary" value="Cancel">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#cpf').kendoMaskedTextBox({ mask: '999.999.999-99' });
+            $('#phone').kendoMaskedTextBox({ mask: '99999-9999' });
+            $('#cep').kendoMaskedTextBox({ mask: '99999-999' });
+
+            $('#cep').blur(function () {
+
+                buscaCep($(this).val());
+            });
+
+            function buscaCep(cep) {
+                console.log(cep);
+                $.ajax({
+                    url: "Customer/BuscaCep",
+                    type: 'get',
+                    data: {
+                        cep: cep
+                    }
+                }).done(function (response) {
+
+                    if (response != null) {
+
+                        $("#street").val(response.logradouro);
+                        $("#neighborhood").val(response.bairro);
+                        $("#city").val(response.localidade);
+                        $("#state").val(response.uf);
+                        $("#complement").val(response.complemento);
+                        $('#cepError').hide();
+
+                    } else {
+                        $('#cepError').text("Cep not found!").show();
+                        $("#street").val('');
+                        $("#neighborhood").val('');
+                        $("#city").val('');
+                        $("#state").val('');
+                        $("#complement").val('');
+                    }
+                    
+
+                });
+            }
+
+        });
+
+    </script>
+}

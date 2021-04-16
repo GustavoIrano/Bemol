@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  bemol.app:
+    image: ${DOCKER_REGISTRY-}bemolapp
+    build:
+      context: .
+      dockerfile: src/bemol.App/Dockerfile
+    environment:
+        DBServer: "db"
+    ports:
+     - "8000:80"
+    depends_on:
+     - db
+    networks:
+     - net
+
+  db:
+    image: luizcarlosfaria/mssql-server-linux:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Gus123456
+      - MSSQL_PID=Developer
+      - MSSQL_DATABASE=bemolDatabase
+      - MSSQL_USER=gus
+      - MSSQL_PASSWORD=Gus654321
+    ports:
+      - "14331:1433"
+    volumes:
+      - sql_data:/var/opt/mssql/data 
+    networks:
+      - net
+ 
+
+volumes:
+  sql_data:
+    driver: local
+
+networks:
+  net:
+    driver: bridge
+
