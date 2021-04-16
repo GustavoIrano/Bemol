@@ -1,5 +1,6 @@
 ﻿using bemol.Business.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System.Text;
 
@@ -43,7 +44,7 @@ namespace bemol.App.Controllers
                     channel.BasicPublish(exchange: "",
                                           routingKey: "users",
                                           basicProperties: null,
-                                          body: Encoding.UTF8.GetBytes(newUser));
+                                          body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(newUser)));
                 }
             }
         }

@@ -18,7 +18,7 @@ namespace bemol.ConsumerMessage
                 HostName = "rabbitmq",
                 UserName = "mc",
                 Password = "mc2",
-                Port = 5672
+                Port = 5672               
             };
             var rabbitMqConnection = factory.CreateConnection();
             var rabbitMqChannel = rabbitMqConnection.CreateModel();
@@ -30,10 +30,9 @@ namespace bemol.ConsumerMessage
                                      autoDelete: false,
                                      arguments: null);
 
-            rabbitMqChannel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
-
             //consume the message received  
             var consumer = new EventingBasicConsumer(rabbitMqChannel);
+
             consumer.Received += (model, args) =>
             {
                 var body = args.Body;
@@ -43,7 +42,7 @@ namespace bemol.ConsumerMessage
                 Thread.Sleep(1000);
             };
             rabbitMqChannel.BasicConsume(queue: "users",
-                                         autoAck: true,
+                                         autoAck: false,
                                          consumer: consumer);
 
             Console.WriteLine(" Press [enter] to exit.");
