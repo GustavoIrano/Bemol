@@ -2,7 +2,6 @@
 using bemol.WebMapNewCustomers.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -46,22 +45,19 @@ namespace bemol.WebMapNewCustomers.Controllers
             };
             var rabbitMqConnection = factory.CreateConnection();
             var rabbitMqChannel = rabbitMqConnection.CreateModel();
-
-            //declare the queue  
+            
             rabbitMqChannel.QueueDeclare(queue: "address",
                                      durable: false,
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
 
-            //consume the message received  
             var consumer = new EventingBasicConsumer(rabbitMqChannel);
 
             consumer.Received += (model, args) =>
             {
                 var body = args.Body;
                 var message = Encoding.UTF8.GetString(body.ToArray());
-                Console.WriteLine("Novo usuário adicionado: " + message);
 
                 var teste = message.Replace(@"\", "").Trim(new char[] { ' ', '"' });
 
@@ -106,16 +102,7 @@ namespace bemol.WebMapNewCustomers.Controllers
             }
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        #region Classes to Geolocation return
 
         // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
         public class AddressComponent
@@ -171,6 +158,6 @@ namespace bemol.WebMapNewCustomers.Controllers
             public string status { get; set; }
         }
 
-
+        #endregion
     }
 }

@@ -23,14 +23,12 @@ namespace bemol.ConsumerMessage
             var rabbitMqConnection = factory.CreateConnection();
             var rabbitMqChannel = rabbitMqConnection.CreateModel();
 
-            //declare the queue  
             rabbitMqChannel.QueueDeclare(queue: "users",
                                      durable: false,
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
 
-            //consume the message received  
             var consumer = new EventingBasicConsumer(rabbitMqChannel);
 
             consumer.Received += (model, args) =>
@@ -41,6 +39,7 @@ namespace bemol.ConsumerMessage
                 rabbitMqChannel.BasicAck(deliveryTag: args.DeliveryTag, multiple: false);
                 Thread.Sleep(1000);
             };
+
             rabbitMqChannel.BasicConsume(queue: "users",
                                          autoAck: false,
                                          consumer: consumer);
