@@ -1,0 +1,18 @@
+1. A solução deve ser disponibilizada em Cloud ou On-premise? 
+- Essa é uma questão que eu sempre acho um pouco mais difícil de ser tomada. Levando em consideração os prós e contras de infra on-premise e cloud eu acredito que se a empresa disponibilizar um bom investimento seria interessante disponibilizar on-promise, visto que teríamos um ambiente dedicado para nossa aplicação. 
+    
+
+2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, responda qual ferramenta acredita ser apropriada para o controle de tarefas da equipe, a ferramenta é ágil? 
+- Acredito que o Jira seria uma ótima ferramenta para controlar as tarefas dessa equipe. É uma ferramenta de metodologia ágil e ajudaria na modalidade Scrum, Kanban ou qualquer outra. 
+    
+
+3. Você se sente capaz de liderar esta equipe? Por quê? 
+- Acredito ser capaz de liderar esta equipe, porque já tive experiências como líder técnico (ponto focal) e analista de requisitos em diferentes projetos de diferentes tipos de negócios. Sempre busco compensar minha deficiências técnicas e/ou pessoais com boa vontade, vontade de me superar e além disso gosto muito de influenciar as pessoas ao meu redor para se superarem e também para mantermos sempre uma boa relação entre os integrantes da equipe. 
+  
+
+4. Se pudesse sugerir uma melhoria, mudança ou oportunidade. O que seria? 
+- Esse projeto para mim simboliza uma grande chance de oportunidade, para me desafiar tecnicamente. Sugeriria que todos da equipe tivessem total envolvimento em tudo para que todos usufruíssem dessa oportunidade de grande crescimento técnico.   
+  
+
+5. Acha válido esse desafio para o processo que está participando? 
+- Sim, com certeza. O desafio possibilita demonstrar a implementação de uma parte de um CRUD que é uma das implementações mais comuns em qualquer projeto e além disso ir mais além com algum tipo de implementação não tão comum como o uso de mensageria. 
