@@ -26,6 +26,18 @@ services:
     networks:
      - net
 
+  bemol.WebMapNewCustomers:
+    image: ${DOCKER_REGISTRY-}bemolwebmapnewcustomers
+    build:
+      context: .
+      dockerfile: src/bemol.WebMapNewCustomers/Dockerfile
+    ports:
+     - "5101:80"
+    depends_on:
+     - rabbitmq
+    networks:
+     - net
+
   db:
     image: luizcarlosfaria/mssql-server-linux:latest
     environment:

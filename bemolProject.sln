@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bemol.App", "src\bemol.App\bemol.App.csproj", "{5FEB49F1-9FF4-4689-A6FD-C2B36CEA4A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bemol.App", "src\bemol.App\bemol.App.csproj", "{5FEB49F1-9FF4-4689-A6FD-C2B36CEA4A40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bemol.Business", "src\bemol.Business\bemol.Business.csproj", "{1B7B9D38-0A4D-4D75-861A-788F7D849AD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bemol.Business", "src\bemol.Business\bemol.Business.csproj", "{1B7B9D38-0A4D-4D75-861A-788F7D849AD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bemol.Data", "src\bemol.Data\bemol.Data.csproj", "{447BC041-D390-46F5-9A8D-0A9E54F8D3E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bemol.Data", "src\bemol.Data\bemol.Data.csproj", "{447BC041-D390-46F5-9A8D-0A9E54F8D3E7}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DC16EC36-579E-4E15-99C8-BB88E047E1EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bemol.ConsumerMessage", "src\bemol.ConsumerMessage\bemol.ConsumerMessage.csproj", "{AE13C91F-621A-4174-AA8C-44C09D251D0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bemol.ConsumerMessage", "src\bemol.ConsumerMessage\bemol.ConsumerMessage.csproj", "{AE13C91F-621A-4174-AA8C-44C09D251D0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bemol.WebMapNewCustomers", "src\bemol.WebMapNewCustomers\bemol.WebMapNewCustomers.csproj", "{62C88F3F-2858-4304-9583-247242B77BC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AE13C91F-621A-4174-AA8C-44C09D251D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE13C91F-621A-4174-AA8C-44C09D251D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE13C91F-621A-4174-AA8C-44C09D251D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C88F3F-2858-4304-9583-247242B77BC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C88F3F-2858-4304-9583-247242B77BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C88F3F-2858-4304-9583-247242B77BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C88F3F-2858-4304-9583-247242B77BC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>New Customers Map</title>
+    <style type="text/css">
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 650px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+    <script>
+
+        function getCoordenadas() {
+
+            $.ajax({
+                async: false,
+                url: "Home/GetCoordenadas",
+                success: function (data) {
+
+                    console.log(data.result);
+
+                    initMap(data.result);
+                }
+            });
+        }
+
+        // Initialize and add the map
+        function initMap(coordenadas) {
+            // The location of Uluru
+            const cent = { lat: -5.3116791, lng: -41.5828383 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: cent,
+            });
+
+            $.each(coordenadas, function (key, address) {
+
+                //console.log(address);
+
+                if (address) {
+                    if (address != null) {
+
+                        new google.maps.Marker({
+                            position: address,
+                            map: map,
+                        });
+                    }
+                }
+
+            });
+
+            setInterval(function () {
+                getCoordenadas();
+            }, 10000);
+        }
+
+    </script>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_nfJfJCdk-caJcUw3FV2I-VJgmNUcHdQ&callback=initMap&libraries=&v=weekly"
+            async></script>
+</body>
+</html>

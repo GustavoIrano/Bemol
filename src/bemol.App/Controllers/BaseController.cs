@@ -1,4 +1,5 @@
 ﻿using bemol.Business.Interfaces;
+using bemol.Business.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -20,7 +21,7 @@ namespace bemol.App.Controllers
             return !_notificador.HaveNotification();
         }
 
-        protected void PublishMessage(string newUser)
+        protected void PublishMessage(Customer customer)
         {
             var factory = new ConnectionFactory()
             {
@@ -44,7 +45,18 @@ namespace bemol.App.Controllers
                     channel.BasicPublish(exchange: "",
                                           routingKey: "users",
                                           basicProperties: null,
-                                          body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(newUser)));
+                                          body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(customer.Name)));
+
+                    channel.QueueDeclare(queue: "address",
+                                          durable: false,
+                                          exclusive: false,
+                                          autoDelete: false,
+                                          arguments: null);
+
+                    channel.BasicPublish(exchange: "",
+                                          routingKey: "address",
+                                          basicProperties: null,
+                                          body: Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(customer.Address.Street)));
                 }
             }
         }
